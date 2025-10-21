@@ -1,0 +1,18 @@
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-gray-800 text-center mb-12">Conteúdos Exclusivos</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (post of blogPosts; track post.id) {
+        <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
+          <img [src]="post.img" [alt]="post.title" class="rounded-lg mb-4 w-full h-56 object-cover">
+
+          <div class="flex flex-col flex-grow">
+            <h3 class="text-2xl font-bold mb-2">{{ post.title }}</h3>
+            <p class="text-gray-600 mb-4 text-sm flex-grow">{{ post.summary }}</p>
+            <a href="#" class="text-blue-600 font-semibold hover:underline mt-auto self-start">Leia Mais &rarr;</a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">Seu Gerador de Prompts de IA</h2>
+        <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Transforme suas fotos em retratos de elegância com seu assistente de IA pessoal.</p>
+    </div>
+
+    <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      <div class="space-y-8">
+        <h3 class="text-3xl font-bold text-gray-800 border-b-2 border-yellow-500 pb-2">Construa seu Prompt Perfeito</h3>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <label for="clothing" class="block text-xl mb-3 font-medium">👤 Bloco I: Fidelidade e Vestuário</label>
+          <textarea id="clothing" [value]="promptInputs().clothing" (input)="updatePromptInput('clothing', $any($event.target).value)"
+                    class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-500 transition" rows="3"></textarea>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <label class="block text-xl mb-3 font-medium">🏞️ Bloco II: Cenário e Ação</label>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="scenario" class="block text-sm font-medium text-gray-700 mb-1">Cenário de Fundo</label>
+              <input type="text" id="scenario" [value]="promptInputs().scenario" (input)="updatePromptInput('scenario', $any($event.target).value)" class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+              <label for="action" class="block text-sm font-medium text-gray-700 mb-1">Posição e Ação</label>
+              <input type="text" id="action" [value]="promptInputs().action" (input)="updatePromptInput('action', $any($event.target).value)" class="w-full p-2 border rounded-lg">
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <label for="photo_style" class="block text-xl mb-3 font-medium">📸 Bloco III: Qualidade Fotográfica</label>
+          <select id="photo_style" [value]="promptInputs().photoStyle" (change)="updatePromptInput('photoStyle', $any($event.target).value)" class="w-full p-2 border rounded-lg">
+            @for (option of photoStyles; track $index) { <option [value]="option">{{ option }}</option> }
+          </select>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <label for="lighting" class="block text-xl mb-3 font-medium">💡 Bloco IV: Iluminação e Atmosfera</label>
+          <select id="lighting" [value]="promptInputs().lighting" (change)="updatePromptInput('lighting', $any($event.target).value)" class="w-full p-2 border rounded-lg">
+            @for (option of lightingStyles; track $index) { <option [value]="option">{{ option }}</option> }
+          </select>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <label for="tech_specs" class="block text-xl mb-3 font-medium">⚙️ Bloco V: Especificações Técnicas</label>
+          <select id="tech_specs" [value]="promptInputs().techSpecs" (change)="updatePromptInput('techSpecs', $any($event.target).value)" class="w-full p-2 border rounded-lg">
+            @for (option of techSpecs; track $index) { <option [value]="option">{{ option }}</option> }
+          </select>
+        </div>
+      </div>
+
+      <div class="sticky top-24 self-start">
+        <h3 class="text-3xl font-bold text-gray-800 border-b-2 border-yellow-500 pb-2 mb-8">Seu Prompt Completo</h3>
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <textarea readonly [value]="finalPrompt()" class="w-full p-4 border rounded-lg bg-gray-100 font-mono text-sm" rows="10"></textarea>
+          <button (click)="copyPrompt()" class="w-full mt-4 bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-full shadow-lg transform hover:scale-105 transition-transform">
+            {{ copyMessage() }}
+          </button>
+          <p [class.opacity-100]="isCopied()" [class.opacity-0]="!isCopied()" class="text-center mt-2 text-green-600 font-semibold transition-opacity duration-300">Copiado para a área de transferência!</p>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>

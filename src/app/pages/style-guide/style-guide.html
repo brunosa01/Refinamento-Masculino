@@ -1,0 +1,22 @@
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-gray-800 text-center mb-12">Guia de Estilo por Ocasião</h2>
+    <div class="max-w-3xl mx-auto space-y-4">
+
+      @for (item of styleGuide; track $index) {
+        <div class="rounded-xl shadow-sm overflow-hidden bg-white">
+          <div (click)="toggleAccordion($index)"
+               class="flex items-center justify-between p-5 font-bold text-gray-800 cursor-pointer hover:bg-gray-50">
+            <span>{{ item.title }}</span>
+            <span class="text-xl">{{ activeAccordionIndex() === $index ? '-' : '+' }}</span>
+          </div>
+
+          <div class="p-5 pt-0 text-gray-600" [class.hidden]="activeAccordionIndex() !== $index">
+            <p>{{ item.content }}</p>
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+</section>
