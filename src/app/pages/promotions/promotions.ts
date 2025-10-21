@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Card } from '../../shared/card/card'; // NOME CORRIGIDO AQUI
 
 @Component({
   selector: 'app-promotions',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Card], // E NOME CORRIGIDO AQUI
   templateUrl: './promotions.html',
   styleUrl: './promotions.scss'
 })
-export class Promotions {
+export class PromotionsComponent {
   // Array com os dados dos produtos
   promotions = [
     { id: 1, title: 'Relógio Clássico de Couro', currentPrice: 'R$ 349,90', oldPrice: 'R$ 499,90', img: 'https://placehold.co/400x400/D4B499/FFFFFF?text=Relógio', link: '#' },

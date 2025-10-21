@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Card } from '../../shared/card/card'; // 1. IMPORTE AQUI
 
 @Component({
   selector: 'app-content',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Card], // 2. ADICIONE AQUI
   templateUrl: './content.html',
   styleUrl: './content.scss'
 })

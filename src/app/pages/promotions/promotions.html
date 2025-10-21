@@ -4,19 +4,14 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       @for (product of promotions; track product.id) {
-        <div class="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
-          <img [src]="product.img" [alt]="product.title" class="rounded-lg mb-4 w-full h-auto flex-shrink-0">
-          <div class="flex flex-col flex-grow justify-between">
-            <div>
-              <h3 class="text-lg font-bold mb-1">{{ product.title }}</h3>
-              <p class="text-sm text-gray-500 line-through">{{ product.oldPrice }}</p>
-              <p class="text-xl font-bold text-blue-600 mb-4">{{ product.currentPrice }}</p>
-            </div>
-            <a [href]="product.link" target="_blank" class="mt-auto bg-gray-800 text-white inline-block py-2 px-6 rounded-full font-bold hover:bg-gray-700 transition-colors">
-              Ver Produto
-            </a>
-          </div>
-        </div>
+        <app-card
+          [imageUrl]="product.img"
+          [title]="product.title"
+          [oldPrice]="product.oldPrice"
+          [currentPrice]="product.currentPrice"
+          [linkUrl]="product.link"
+          buttonText="Ver Produto">
+        </app-card>
       }
     </div>
   </div>
